@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Edit Organisation</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row m-4">
+            <div class="col text-center border border-dark">
+                <h1>Edit Organisation</h1>
+            </div>
+        </div>
+        <div class="row m-4 border border-dark">
+            <div class="col text-center m-3">
+                <a href="superheroes" class="btn btn-outline-primary btn-lg">Superheroes</a>
+            </div>
+            <div class="col text-center m-3">
+                <a href="sightings" class="btn btn-outline-primary btn-lg">Sightings</a>
+            </div>
+            <div class="col text-center m-3">
+                <a href="locations" class="btn btn-outline-primary btn-lg">Locations</a>
+            </div>
+            <div class="col text-center m-3">
+                <a href="organisations" class="btn btn-outline-primary btn-lg">Organisations</a>
+            </div>
+
+            <div class="row m-4 border border-dark">
+                <div class="col-3 text-center m-3">
+                    <span class="h3">Edit Organisation</span>
+                </div>
+                <div class="col-7 text-center m-3">
+                    <form action="editOrg" method="POST">
+                        <div class="form-group row">
+                            <label for="org_name" class="col-3 col-form-label">
+                                Organisation Name</label>
+                            <div class="col-9">
+                                <input type="text" name="org_name" id="org_name"
+                                       class="form-control" th:value="${organisation.org_name}"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="org_description" class="col-3 col-form-label">
+                                Organisation Description</label>
+                            <div class="col-9">
+                                <input type="text" name="org_description" id="org_description"
+                                       class="form-control"  th:value="${organisation.org_description}"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="address" class="col-3 col-form-label">
+                                Address</label>
+                            <div class="col-9">
+                                <input type="text" name="address" id="address"
+                                       class="form-control" th:value="${organisation.address}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="superheroes" class="col-3 col-form-label">Superheroes</label>
+                            <div class="col-9">
+                                <select multiple id="superheroes" name="superheroID"
+                                        class="form-control">
+                                    <option th:each="superhero : ${superheroes}"
+                                            th:value="${superhero.hero_id}"
+                                            th:text="${superhero.heroName}"
+                                            th:selected="${organisation.members.contains(superhero)}">
+                                        Student Name</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="hidden" name="id" th:value="${organisation.org_id}"/>
+                        <button type="submit" class="btn btn-primary">
+                            Update Hero</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>
